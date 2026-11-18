@@ -456,7 +456,8 @@
     { id:'bdhead', name:'고스트 바둑왕 머리', image:'image/바둑왕머리.png', price:25 },
     { id:'bdclothes', name:'고스트 바둑왕 옷', image:'image/바둑왕옷.png', price:45 },
     { id:'ribbon', name:'리본 넥타이', image:'image/리본넥타이.png', price:15 },
-    { id:'dorong', name:'도롱이', image:'image/도롱이.png', price:100 }
+    { id:'dorong', name:'도롱이', image:'image/도롱이.png', price:100 },
+    { id:'duksun', name:'덕선이', image:'image/덕선이.png', price:200 }
   ];
 
   /*
@@ -579,7 +580,7 @@
 
   function feedPet(name, hungerGain, cost, expGain) {
     if (state.coins < cost) {
-      say('코인이 부족해! 미니게임으로 코인을 모아줘.');
+      say('돈이 없잖아 그지년아');
       closePanels();
       return;
     }
@@ -587,7 +588,7 @@
     state.hunger += hungerGain;
     state.exp += expGain;
     closePanels();
-    say(`냠냠! ${name} 정말 맛있어!`);
+    say(`냠냠! ${name} 존맛탱이누`);
     const r = document.getElementById('pet-container').getBoundingClientRect();
     spawnParticle(r.left + 70, r.top + 30, '😋');
     saveAndRender();
@@ -629,7 +630,7 @@
     state.coins -= item.price;
     state.ownedAccessories.push(item.id);
     if (!state.equippedAccessories.includes(item.id)) state.equippedAccessories.push(item.id);
-    say(`"${item.name}" 호구 안녕? 입었는데 어땡? ㅎ`);
+    say(`"${item.name}" 입음! 호구 안녕? 어땡? ㅎ`);
     saveAndRender();
     openShopPanel();
   }
@@ -776,7 +777,7 @@
       say('샤워 모드 ON! 희주를 문질러 씻겨줘!');
     } else {
       btn.classList.remove('active-mode');
-      say('목욕 끝! 개운해졌어!');
+      say('목욕 끝! 개운하당 ㅎ');
     }
   }
 
@@ -788,7 +789,7 @@
     state.clean += 2.5;
     state.exp += 1;
     spawnParticle(e.clientX, e.clientY, '🫧');
-    if (state.clean >= 100) say('반짝반짝 완벽하게 깨끗해졌어!');
+    if (state.clean >= 100) say('후웅 히주 깨끗행?');
     saveAndRender();
   }
 
@@ -804,7 +805,7 @@
     const reactions = [
       '얘들아 디코하장',
       '희주 예뻥?ㅎ',
-      '오늘도 나랑 놀아 줘서 고마워',
+      '돈내놔',
       '뭘 보누'
     ];
     say(reactions[Math.floor(Math.random() * reactions.length)]);
